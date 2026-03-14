@@ -846,6 +846,157 @@ footer a {
 }
 
 /* ═══════════════════════════════════════════
+   PRÉINSCRIPTION FORM
+   ═══════════════════════════════════════════ */
+.form-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 24px;
+  padding: 3rem;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+.form-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.form-group label .required {
+  color: var(--luc-magenta);
+  margin-left: 2px;
+}
+.form-group input,
+.form-group select {
+  padding: 0.85rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(201,168,76,0.2);
+  background: rgba(255,255,255,0.04);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  transition: all 0.3s;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a84c' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+.form-group select option {
+  background: var(--navy);
+  color: var(--white);
+}
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
+}
+.form-group input::placeholder {
+  color: var(--grey);
+  font-weight: 300;
+}
+.form-row-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+}
+.form-submit-area {
+  margin-top: 2rem;
+  text-align: center;
+}
+.btn-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.1rem 3rem;
+  border-radius: 60px;
+  background: var(--gold);
+  color: var(--navy-deep);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-out-expo);
+}
+.btn-submit:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(201,168,76,0.35);
+}
+.btn-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 3rem 2rem;
+}
+.form-success.show {
+  display: block;
+  animation: fadeInUp 0.6s var(--ease-out-expo) both;
+}
+.form-success-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+.form-success h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.form-success p {
+  color: var(--grey-light);
+  font-weight: 300;
+}
+.form-note {
+  text-align: center;
+  margin-top: 1.2rem;
+  font-size: 0.78rem;
+  color: var(--grey);
+  font-weight: 300;
+}
+.ecole-autre-wrapper {
+  display: none;
+  margin-top: 0.5rem;
+}
+.ecole-autre-wrapper.show {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .form-row-3 { grid-template-columns: 1fr; }
+  .form-wrapper { padding: 2rem 1.5rem; }
+}
+
+/* ═══════════════════════════════════════════
    ANIMATIONS
    ═══════════════════════════════════════════ */
 @keyframes fadeInUp {
@@ -916,6 +1067,7 @@ footer a {
       <li><a href="#innovation">Innovation</a></li>
       <li><a href="#grille">Grille horaire</a></li>
       <li><a href="#diplomes">Diplômes</a></li>
+      <li><a href="#inscription">Inscription</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="menu-toggle" id="menuToggle" aria-label="Menu">
@@ -1260,6 +1412,117 @@ footer a {
 </section>
 
 <!-- ═══════════════ CTA / CONTACT ═══════════════ -->
+
+<!-- ═══════════════ PRÉINSCRIPTION ═══════════════ -->
+<section class="section section-mid" id="inscription">
+  <div class="container">
+    <div class="section-tag reveal" style="justify-content: center;">Préinscription</div>
+    <h2 class="section-title reveal reveal-delay-1" style="text-align: center;">Préinscription rapide</h2>
+    <p class="section-lead reveal reveal-delay-2" style="text-align: center; margin-left: auto; margin-right: auto;">Intéressé(e) par la section comptabilité ? Laissez-nous vos coordonnées et nous vous recontacterons dans les meilleurs délais.</p>
+
+    <div class="form-wrapper reveal reveal-delay-3">
+      <!-- Formulaire -->
+      <div id="formContent">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Prénom <span class="required">*</span></label>
+            <input type="text" id="fPrenom" placeholder="Votre prénom" required>
+          </div>
+          <div class="form-group">
+            <label>Nom <span class="required">*</span></label>
+            <input type="text" id="fNom" placeholder="Votre nom" required>
+          </div>
+          <div class="form-group">
+            <label>Adresse e-mail</label>
+            <input type="email" id="fEmail" placeholder="exemple@email.com">
+          </div>
+          <div class="form-group">
+            <label>Numéro de GSM</label>
+            <input type="tel" id="fGsm" placeholder="04XX / XX XX XX">
+          </div>
+        </div>
+
+        <div class="form-row-3" style="margin-top: 1.5rem;">
+          <div class="form-group">
+            <label>Âge <span class="required">*</span></label>
+            <select id="fAge">
+              <option value="" disabled selected>Sélectionner</option>
+              <option value="11">11 ans</option>
+              <option value="12">12 ans</option>
+              <option value="13">13 ans</option>
+              <option value="14">14 ans</option>
+              <option value="15">15 ans</option>
+              <option value="16">16 ans</option>
+              <option value="17">17 ans</option>
+              <option value="18">18 ans</option>
+              <option value="19">19 ans</option>
+              <option value="20">20 ans</option>
+              <option value="21">21 ans</option>
+              <option value="22">22 ans</option>
+              <option value="23">23 ans</option>
+              <option value="24">24 ans</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Année scolaire <span class="required">*</span></label>
+            <select id="fAnnee">
+              <option value="" disabled selected>Sélectionner</option>
+              <option value="3e secondaire">3e année secondaire</option>
+              <option value="4e secondaire">4e année secondaire</option>
+              <option value="5e secondaire">5e année secondaire</option>
+              <option value="6e secondaire">6e année secondaire</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Filière <span class="required">*</span></label>
+            <select id="fFiliere">
+              <option value="" disabled selected>Sélectionner</option>
+              <option value="Général">Général</option>
+              <option value="Technique">Technique</option>
+              <option value="Professionnel">Professionnel</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 1.5rem;">
+          <label>École actuelle <span class="required">*</span></label>
+          <select id="fEcole" onchange="toggleAutreEcole()">
+            <option value="" disabled selected>Sélectionner votre école</option>
+            <option value="Collège Saint-Stanislas (Mons)">Collège Saint-Stanislas (Mons)</option>
+            <option value="Athénée Royal Marguerite Bervoets (Mons)">Athénée Royal Marguerite Bervoets (Mons)</option>
+            <option value="Institut des Ursulines (Mons)">Institut des Ursulines (Mons)</option>
+            <option value="Athénée Royal de Jemappes (Mons)">Athénée Royal de Jemappes (Mons)</option>
+            <option value="Athénée Royal de Colfontaine (Pâturages)">Athénée Royal de Colfontaine (Pâturages)</option>
+            <option value="Athénée Royal de Dour">Athénée Royal de Dour</option>
+            <option value="Institut de la Sainte-Union (Dour)">Institut de la Sainte-Union (Dour)</option>
+            <option value="Athénée Royal de Saint-Ghislain">Athénée Royal de Saint-Ghislain</option>
+            <option value="Collège Sainte-Marie (Saint-Ghislain)">Collège Sainte-Marie (Saint-Ghislain)</option>
+            <option value="__autre__">Autre école...</option>
+          </select>
+          <div class="ecole-autre-wrapper" id="ecoleAutreWrapper">
+            <input type="text" id="fEcoleAutre" placeholder="Nom de votre école et localité">
+          </div>
+        </div>
+
+        <div class="form-submit-area">
+          <button class="btn-submit" id="btnSubmit" onclick="envoyerInscription()">
+            ✉️ Envoyer ma préinscription
+          </button>
+        </div>
+        <p class="form-note">Vos données sont uniquement utilisées pour vous recontacter au sujet de la formation.</p>
+      </div>
+
+      <!-- Message de succès -->
+      <div class="form-success" id="formSuccess">
+        <div class="form-success-icon">✅</div>
+        <h3>Merci pour votre intérêt !</h3>
+        <p>Votre préinscription a bien été enregistrée.<br>Nous vous recontacterons très prochainement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA / CONTACT ═══════════════ -->
 <section class="cta-section section-accent" id="contact">
   <div class="container" style="position: relative; z-index: 2;">
     <div class="section-tag reveal" style="justify-content: center;">Prêt(e) ?</div>
@@ -1332,6 +1595,74 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
+
+// ═══════════════ PRÉINSCRIPTION ═══════════════
+var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw8mlc_nVEXMKb6x26Bv8oNjJt1aIG-_aKXAwuWUEuPau2bEjB-bjrZ3fjJZeb8aD5OTA/exec';
+
+function toggleAutreEcole() {
+  var sel = document.getElementById('fEcole');
+  var wrap = document.getElementById('ecoleAutreWrapper');
+  if (sel.value === '__autre__') {
+    wrap.classList.add('show');
+    document.getElementById('fEcoleAutre').focus();
+  } else {
+    wrap.classList.remove('show');
+    document.getElementById('fEcoleAutre').value = '';
+  }
+}
+
+function envoyerInscription() {
+  var prenom = document.getElementById('fPrenom').value.trim();
+  var nom = document.getElementById('fNom').value.trim();
+  var email = document.getElementById('fEmail').value.trim();
+  var gsm = document.getElementById('fGsm').value.trim();
+  var age = document.getElementById('fAge').value;
+  var annee = document.getElementById('fAnnee').value;
+  var filiere = document.getElementById('fFiliere').value;
+  var ecoleSelect = document.getElementById('fEcole').value;
+  var ecoleAutre = document.getElementById('fEcoleAutre').value.trim();
+  var ecole = (ecoleSelect === '__autre__') ? ecoleAutre : ecoleSelect;
+
+  // Validation
+  if (!prenom || !nom) { alert('Veuillez indiquer votre prénom et votre nom.'); return; }
+  if (!email && !gsm) { alert('Veuillez indiquer au moins un e-mail ou un numéro de GSM.'); return; }
+  if (!age) { alert('Veuillez sélectionner votre âge.'); return; }
+  if (!ecole) { alert('Veuillez indiquer votre école actuelle.'); return; }
+  if (!annee) { alert('Veuillez sélectionner votre année scolaire.'); return; }
+  if (!filiere) { alert('Veuillez sélectionner votre filière.'); return; }
+
+  var btn = document.getElementById('btnSubmit');
+  btn.disabled = true;
+  btn.textContent = '⏳ Envoi en cours...';
+
+  var donnees = {
+    a: prenom,
+    b: nom,
+    c: email,
+    d: gsm,
+    e: age,
+    f: ecole,
+    g: annee,
+    h: filiere
+  };
+
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(donnees)
+  })
+  .then(function() {
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+  })
+  .catch(function(err) {
+    console.error('Erreur envoi :', err);
+    alert('Une erreur est survenue. Veuillez réessayer.');
+    btn.disabled = false;
+    btn.textContent = '✉️ Envoyer ma préinscription';
+  });
+}
 </script>
 </body>
 </html>

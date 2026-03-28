@@ -1706,25 +1706,27 @@ function envoyerInscription() {
 }
 
 // ═══════════════ SUIVI DES VISITEURS ═══════════════
-// Remplacez l'URL ci-dessous par celle de votre Google Apps Script de tracking
-var TRACKER_URL = 'https://script.google.com/macros/s/AKfycbwHzA6aRUtdTkPycAFznto-mbsnN1ZxzjoN48Ep4n4OEc0tKTwgF0iV--pY6az4PJqv/exec'; // ← Collez ici l'URL de votre script de tracking
+var TRACKER_URL = 'https://script.google.com/macros/s/AKfycbwHzA6aRUtdTkPycAFznto-mbsnN1ZxzjoN48Ep4n4OEc0tKTwgF0iV--pY6az4PJqv/exec';
 
 (function() {
   if (!TRACKER_URL) return;
+  // Génération d'un identifiant de session unique (persiste entre les pages)
+  if (!sessionStorage.getItem('visitorSessionId')) {
+    sessionStorage.setItem('visitorSessionId', 'V-' + Date.now().toString(36) + '-' + Math.random().toString(36).substring(2, 7));
+  }
+  var sessionId = sessionStorage.getItem('visitorSessionId');
   try {
-    var visitData = {
-      a: new Date().toLocaleString('fr-BE'),
-      b: document.title,
-      c: window.location.href,
-      d: document.referrer || 'direct',
-      e: navigator.userAgent.substring(0, 150),
-      f: screen.width + 'x' + screen.height
-    };
     fetch(TRACKER_URL, {
-      method: 'POST',
-      mode: 'no-cors',
+      method: 'POST', mode: 'no-cors',
       headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify(visitData)
+      body: JSON.stringify({
+        a: sessionId,
+        b: 'Comptabilité - Technicien en Comptabilité',
+        c: window.location.href,
+        d: document.referrer || 'direct',
+        e: navigator.userAgent.substring(0, 150),
+        f: screen.width + 'x' + screen.height
+      })
     });
   } catch(err) {}
 })();
